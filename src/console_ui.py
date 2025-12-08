@@ -3,7 +3,6 @@ Console UI for TuoiTre.vn crawler.
 Prompts user for category URLs and post counts, then runs the crawler.
 """
 
-from pathlib import Path
 import sys
 from types import SimpleNamespace
 

@@ -3,7 +3,6 @@ Configuration file for TuoiTre.vn web crawler
 Contains category URLs, delay settings, user agent rotation, and other crawler settings
 """
 
-import os
 from pathlib import Path
 
 # Base directory (project root)
@@ -45,7 +44,6 @@ USER_AGENTS = [
 
 # Vietnamese encoding settings
 DEFAULT_ENCODING = 'utf-8'
-FALLBACK_ENCODINGS = ['utf-8', 'latin-1', 'cp1252']
 
 # Data storage paths (outside src/)
 DATA_DIR = BASE_DIR / 'data'
@@ -62,7 +60,6 @@ MEDIA_DIR = DATA_DIR / 'media'
 # Media download settings
 DOWNLOAD_IMAGES = True
 DOWNLOAD_AUDIO = True
-DOWNLOAD_VIDEO = True
 MEDIA_TYPES = {
     'images': ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
     'audio': ['mp3', 'wav', 'ogg', 'm4a', 'aac'],
@@ -70,7 +67,6 @@ MEDIA_TYPES = {
 }
 
 # Media organization
-ORGANIZE_MEDIA_BY_POST = True  # Create separate folders for each post's media
 MAX_FILENAME_LENGTH = 255  # Maximum filename length for file system compatibility
 
 # Logging settings (console only)
@@ -83,9 +79,7 @@ SKIP_ON_ERROR = True  # Continue crawling even if one post fails
 SAVE_PARTIAL_DATA = True  # Save data even if some fields are missing
 GRACEFUL_DEGRADATION = True  # Don't fail if optional data is missing
 
-# Rate limiting
-RESPECT_ROBOTS_TXT = True
-CONCURRENT_REQUESTS = 1  # Number of concurrent requests (keep low to be polite)
+# Rate limiting (currently not used, but kept for future use)
 
 # Output settings
 JSON_INDENT = 2  # Pretty print JSON with 2-space indentation
@@ -93,7 +87,6 @@ INCLUDE_METADATA = True  # Include crawl timestamp and other metadata in JSON
 
 # Comment scraping settings
 MAX_COMMENT_DEPTH = 10  # Maximum depth for nested replies
-LOAD_ALL_COMMENTS = True  # Attempt to load all comments including paginated ones
 
 # Create necessary directories
 def create_directories():
@@ -102,10 +95,6 @@ def create_directories():
     for directory in directories:
         directory.mkdir(parents=True, exist_ok=True)
 
-    # Create subdirectories for media types if organizing by type
-    if not ORGANIZE_MEDIA_BY_POST:
-        for media_type in MEDIA_TYPES.keys():
-            (MEDIA_DIR / media_type).mkdir(parents=True, exist_ok=True)
 
 
 def is_url_allowed(url: str) -> bool:
@@ -127,12 +116,3 @@ def is_url_allowed(url: str) -> bool:
             return False
 
     return True
-
-
-if __name__ == '__main__':
-    create_directories()
-    print("Configuration loaded successfully")
-    print(f"Base directory: {BASE_DIR}")
-    print(f"Categories to crawl: {len(CATEGORY_URLS)}")
-    print(f"Target posts per category: {POSTS_PER_CATEGORY}")
-    print(f"Total expected posts: {len(CATEGORY_URLS) * POSTS_PER_CATEGORY}")

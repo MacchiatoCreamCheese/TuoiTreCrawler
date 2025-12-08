@@ -9,7 +9,7 @@ import logging
 import sys
 import time
 from pathlib import Path
-from typing import List, Optional, Dict, Any
+from typing import List, Dict, Any
 
 import config
 
@@ -515,8 +515,6 @@ def main():
     """
     Main entry point for the crawler
     """
-    import time
-
     # Parse command-line arguments
     args = parse_arguments()
 

@@ -7,7 +7,7 @@ import time
 import random
 import re
 from typing import List, Dict, Optional, Any
-from urllib.parse import urljoin, urlparse, parse_qs
+from urllib.parse import urljoin, urlparse
 from datetime import datetime
 
 import requests
@@ -674,7 +674,3 @@ def extract_vote_reactions(scraper: TuoiTreScraper, post_url: str, soup: Beautif
     except Exception as e:
         logger.warning(f"Error extracting reactions from {post_url}: {e}")
         return {}
-
-
-# Helper function to update existing code
-TuoiTreScraper._is_valid_article_url = staticmethod(_is_valid_article_url)

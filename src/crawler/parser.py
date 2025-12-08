@@ -6,7 +6,7 @@ Handles extracting comments with nested replies and vote reactions using API
 import re
 import time
 import json
-from typing import List, Dict, Optional, Any, Tuple
+from typing import List, Dict, Optional, Any
 from datetime import datetime
 from bs4 import BeautifulSoup, Tag
 
@@ -291,117 +291,6 @@ def _normalize_api_comment(comment_data: Dict[str, Any]) -> Optional[Dict[str, A
     except Exception as e:
         logger.error(f"Error normalizing comment: {e}")
         return None
-
-
-def _find_comments_container(soup: BeautifulSoup) -> Optional[Tag]:
-    """
-    Find the main comments container element
-
-    Args:
-        soup: BeautifulSoup object
-
-    Returns:
-        Comment container element or None
-    """
-    # Try multiple possible comment container selectors
-    selectors = [
-        ('div', {'id': re.compile(r'comment|box-comment|list-comment', re.I)}),
-        ('div', {'class': re.compile(r'comment-list|comments-list|box-comment', re.I)}),
-        ('section', {'class': re.compile(r'comment', re.I)}),
-        ('div', {'id': 'tab-comment'}),
-        ('div', {'class': 'list-comment'}),
-    ]
-
-    for tag, attrs in selectors:
-        container = soup.find(tag, attrs)
-        if container:
-            logger.debug(f"Found comments container: {tag} with {attrs}")
-            return container
-
-    return None
-
-
-def _extract_top_level_comments(
-    container: Tag,
-    post_url: str,
-    max_depth: int
-) -> List[Dict[str, Any]]:
-    """
-    Extract all top-level comments from container
-
-    Args:
-        container: Comment container element
-        post_url: URL of the post
-        max_depth: Maximum depth for nested replies
-
-    Returns:
-        List of comment dictionaries
-    """
-    comments = []
-
-    # Find all comment elements (not nested in other comments)
-    # Try multiple patterns for comment elements
-    comment_selectors = [
-        ('div', {'class': re.compile(r'^comment-item|^item-comment')}),
-        ('li', {'class': re.compile(r'comment')}),
-        ('div', {'data-comment-id': True}),
-        ('div', {'class': 'detail-cmtlistreply'}),
-    ]
-
-    comment_elements = []
-    for tag, attrs in comment_selectors:
-        elements = container.find_all(tag, attrs, recursive=False)
-        if elements:
-            comment_elements = elements
-            logger.debug(f"Found {len(elements)} comment elements with {tag} {attrs}")
-            break
-
-    # If no direct children found, try finding all comment items
-    if not comment_elements:
-        comment_elements = container.find_all(
-            ['div', 'li'],
-            class_=re.compile(r'comment-item|item-comment'),
-            recursive=True
-        )
-        # Filter to only top-level (not nested)
-        comment_elements = [
-            elem for elem in comment_elements
-            if not _is_nested_comment(elem)
-        ]
-
-    for comment_elem in comment_elements:
-        try:
-            comment = _parse_comment_element(comment_elem, post_url, depth=0, max_depth=max_depth)
-            if comment:
-                comments.append(comment)
-        except Exception as e:
-            logger.warning(f"Failed to parse comment element: {e}")
-            if not config.SKIP_ON_ERROR:
-                raise
-
-    return comments
-
-
-def _is_nested_comment(element: Tag) -> bool:
-    """
-    Check if comment element is nested inside another comment
-
-    Args:
-        element: Comment element to check
-
-    Returns:
-        True if element is nested
-    """
-    parent = element.parent
-    while parent:
-        # Check if parent has comment-like class
-        parent_classes = parent.get('class', [])
-        if any('comment' in cls.lower() or 'reply' in cls.lower() for cls in parent_classes):
-            # Check if parent is also a comment item
-            if any(cls in parent_classes for cls in ['comment-item', 'item-comment', 'detail-cmtlistreply']):
-                return True
-        parent = parent.parent
-    return False
 
 
 def _parse_comment_element(
@@ -693,58 +582,6 @@ def _extract_nested_replies(
     return replies
 
 
-def _load_paginated_comments(
-    scraper,
-    post_url: str,
-    soup: BeautifulSoup,
-    max_depth: int
-) -> List[Dict[str, Any]]:
-    """
-    Load additional comments if pagination is present
-
-    Args:
-        scraper: TuoiTreScraper instance
-        post_url: URL of the post
-        soup: BeautifulSoup object
-        max_depth: Maximum depth for nested replies
-
-    Returns:
-        List of additional comments from pagination
-    """
-    additional_comments = []
-
-    # Look for "Load more comments" button or pagination
-    load_more_selectors = [
-        ('button', {'class': re.compile(r'load-more|show-more|more-comment')}),
-        ('a', {'class': re.compile(r'load-more|show-more|more-comment')}),
-        ('div', {'class': re.compile(r'load-more|show-more')}),
-    ]
-
-    load_more_elem = None
-    for tag, attrs in load_more_selectors:
-        load_more_elem = soup.find(tag, attrs)
-        if load_more_elem:
-            break
-
-    if not load_more_elem:
-        return []
-
-    # Check if there's an AJAX endpoint or pagination URL
-    ajax_url = load_more_elem.get('data-url') or load_more_elem.get('href')
-
-    if ajax_url:
-        try:
-            logger.info(f"Loading more comments from: {ajax_url}")
-            # Note: This is a placeholder - actual implementation would depend on
-            # TuoiTre.vn's specific AJAX structure
-            # For now, we'll log and continue
-            logger.warning("Paginated comments loading not fully implemented")
-        except Exception as e:
-            logger.warning(f"Failed to load paginated comments: {e}")
-
-    return additional_comments
-
-
 def _count_all_comments(comments: List[Dict[str, Any]]) -> int:
     """
     Count total comments including all nested replies
@@ -782,54 +619,6 @@ def validate_comment_count(comments: List[Dict[str, Any]], min_required: int = 2
         logger.warning(f"✗ Comment count validation failed: {total} < {min_required}")
 
     return is_valid
-
-
-def find_posts_with_comments(
-    scraper,
-    post_urls: List[str],
-    min_comments: int = 20
-) -> Tuple[List[str], List[int]]:
-    """
-    Find posts that have at least the minimum number of comments
-
-    Args:
-        scraper: TuoiTreScraper instance
-        post_urls: List of post URLs to check
-        min_comments: Minimum number of comments required
-
-    Returns:
-        Tuple of (posts with enough comments, comment counts)
-    """
-    logger.info(f"Searching for posts with at least {min_comments} comments...")
-
-    posts_with_enough_comments = []
-    comment_counts = []
-
-    for i, post_url in enumerate(post_urls, 1):
-        try:
-            logger.info(f"[{i}/{len(post_urls)}] Checking comments on: {post_url}")
-
-            comments = extract_comments(scraper, post_url)
-            count = _count_all_comments(comments)
-            comment_counts.append(count)
-
-            logger.info(f"  Found {count} total comments")
-
-            if count >= min_comments:
-                posts_with_enough_comments.append(post_url)
-                logger.info(f"  ✓ Post has enough comments ({count} >= {min_comments})")
-
-            # Add small delay between checks
-            if i < len(post_urls):
-                time.sleep(1)
-
-        except Exception as e:
-            logger.error(f"Error checking comments for {post_url}: {e}")
-            comment_counts.append(0)
-
-    logger.info(f"\nFound {len(posts_with_enough_comments)} posts with {min_comments}+ comments")
-
-    return posts_with_enough_comments, comment_counts
 
 
 def get_comment_statistics(comments: List[Dict[str, Any]]) -> Dict[str, Any]:

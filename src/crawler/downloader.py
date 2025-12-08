@@ -7,11 +7,10 @@ import os
 import re
 import time
 from pathlib import Path
-from typing import List, Dict, Optional, Tuple, Any
+from typing import List, Dict, Optional, Any
 from urllib.parse import urlparse, unquote
 import hashlib
 
-import requests
 from bs4 import BeautifulSoup
 
 import config
@@ -19,8 +18,7 @@ from crawler.utils.logger import create_module_logger
 from crawler.utils.helpers import (
     sanitize_filename,
     normalize_url,
-    get_file_extension,
-    estimate_media_type
+    get_file_extension
 )
 from crawler.utils.exceptions import MediaDownloadError
 
@@ -729,20 +727,3 @@ def download_all_media(
                 raise
 
     return results
-
-
-def get_media_urls(soup: BeautifulSoup, post_url: str = None) -> Dict[str, List[str]]:
-    """
-    Extract all media URLs without downloading
-
-    Args:
-        soup: BeautifulSoup object
-        post_url: Post URL for resolving relative URLs
-
-    Returns:
-        Dictionary with lists of URLs by media type
-    """
-    return {
-        'images': _extract_image_urls(soup, post_url),
-        'audio': [_extract_audio_url(soup, post_url)] if _extract_audio_url(soup, post_url) else []
-    }

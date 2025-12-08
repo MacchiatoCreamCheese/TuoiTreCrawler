@@ -95,37 +95,6 @@ def normalize_url(url: str, base_url: str = None) -> str:
     return url.strip()
 
 
-def extract_domain(url: str) -> str:
-    """
-    Extract domain from URL
-
-    Args:
-        url: URL to parse
-
-    Returns:
-        Domain name
-    """
-    parsed = urlparse(url)
-    return parsed.netloc
-
-
-def is_valid_url(url: str) -> bool:
-    """
-    Check if URL is valid
-
-    Args:
-        url: URL to validate
-
-    Returns:
-        True if URL is valid
-    """
-    try:
-        result = urlparse(url)
-        return all([result.scheme, result.netloc])
-    except Exception:
-        return False
-
-
 def clean_text(text: str) -> str:
     """
     Clean and normalize text content
@@ -189,69 +158,6 @@ def parse_vietnamese_date(date_string: str) -> Optional[datetime]:
     return None
 
 
-def format_timestamp(dt: datetime = None) -> str:
-    """
-    Format timestamp in ISO 8601 format
-
-    Args:
-        dt: datetime object (uses current time if None)
-
-    Returns:
-        Formatted timestamp string
-    """
-    if dt is None:
-        dt = datetime.now()
-
-    return dt.isoformat()
-
-
-def create_slug(text: str, max_length: int = 50) -> str:
-    """
-    Create URL-friendly slug from text
-
-    Args:
-        text: Text to convert to slug
-        max_length: Maximum slug length
-
-    Returns:
-        Slug string
-    """
-    # Convert to lowercase
-    slug = text.lower()
-
-    # Replace Vietnamese characters with ASCII equivalents
-    vietnamese_map = {
-        'á': 'a', 'à': 'a', 'ả': 'a', 'ã': 'a', 'ạ': 'a',
-        'ă': 'a', 'ắ': 'a', 'ằ': 'a', 'ẳ': 'a', 'ẵ': 'a', 'ặ': 'a',
-        'â': 'a', 'ấ': 'a', 'ầ': 'a', 'ẩ': 'a', 'ẫ': 'a', 'ậ': 'a',
-        'é': 'e', 'è': 'e', 'ẻ': 'e', 'ẽ': 'e', 'ẹ': 'e',
-        'ê': 'e', 'ế': 'e', 'ề': 'e', 'ể': 'e', 'ễ': 'e', 'ệ': 'e',
-        'í': 'i', 'ì': 'i', 'ỉ': 'i', 'ĩ': 'i', 'ị': 'i',
-        'ó': 'o', 'ò': 'o', 'ỏ': 'o', 'õ': 'o', 'ọ': 'o',
-        'ô': 'o', 'ố': 'o', 'ồ': 'o', 'ổ': 'o', 'ỗ': 'o', 'ộ': 'o',
-        'ơ': 'o', 'ớ': 'o', 'ờ': 'o', 'ở': 'o', 'ỡ': 'o', 'ợ': 'o',
-        'ú': 'u', 'ù': 'u', 'ủ': 'u', 'ũ': 'u', 'ụ': 'u',
-        'ư': 'u', 'ứ': 'u', 'ừ': 'u', 'ử': 'u', 'ữ': 'u', 'ự': 'u',
-        'ý': 'y', 'ỳ': 'y', 'ỷ': 'y', 'ỹ': 'y', 'ỵ': 'y',
-        'đ': 'd'
-    }
-
-    for viet, ascii_char in vietnamese_map.items():
-        slug = slug.replace(viet, ascii_char)
-
-    # Replace non-alphanumeric with hyphens
-    slug = re.sub(r'[^a-z0-9]+', '-', slug)
-
-    # Remove leading/trailing hyphens
-    slug = slug.strip('-')
-
-    # Truncate to max length
-    if len(slug) > max_length:
-        slug = slug[:max_length].rsplit('-', 1)[0]
-
-    return slug
-
-
 def get_file_extension(url: str) -> str:
     """
     Get file extension from URL
@@ -311,60 +217,3 @@ def calculate_delay(min_delay: float, max_delay: float) -> float:
         Random delay between min and max
     """
     return random.uniform(min_delay, max_delay)
-
-
-def truncate_text(text: str, max_length: int = 100, suffix: str = '...') -> str:
-    """
-    Truncate text to maximum length
-
-    Args:
-        text: Text to truncate
-        max_length: Maximum length
-        suffix: Suffix to append if truncated
-
-    Returns:
-        Truncated text
-    """
-    if len(text) <= max_length:
-        return text
-
-    return text[:max_length - len(suffix)] + suffix
-
-
-def merge_dicts(dict1: Dict[str, Any], dict2: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Merge two dictionaries, with dict2 values taking precedence
-
-    Args:
-        dict1: First dictionary
-        dict2: Second dictionary
-
-    Returns:
-        Merged dictionary
-    """
-    result = dict1.copy()
-    result.update(dict2)
-    return result
-
-
-def safe_get(dictionary: Dict, *keys, default=None) -> Any:
-    """
-    Safely get nested dictionary value
-
-    Args:
-        dictionary: Dictionary to search
-        *keys: Chain of keys to follow
-        default: Default value if key not found
-
-    Returns:
-        Value or default
-    """
-    current = dictionary
-    for key in keys:
-        if isinstance(current, dict):
-            current = current.get(key)
-            if current is None:
-                return default
-        else:
-            return default
-    return current if current is not None else default
