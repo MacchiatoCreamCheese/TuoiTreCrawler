@@ -245,7 +245,7 @@ def download_images(
             raise ValueError("Either soup or post_url must be provided")
         soup = scraper.get_html(post_url)
 
-    # Determine save directory
+    # Determine save directory (./images/<postId>/)
     if save_dir is None:
         save_dir = config.IMAGES_DIR / post_id
     save_dir.mkdir(parents=True, exist_ok=True)
@@ -277,7 +277,11 @@ def download_images(
             # Skip if already exists
             if save_path.exists() and save_path.stat().st_size > 0:
                 logger.debug(f"Image already exists: {filename}")
-                downloaded_paths.append(str(save_path))
+                try:
+                    rel_path = save_path.relative_to(config.BASE_DIR)
+                    downloaded_paths.append(f"./{rel_path.as_posix()}")
+                except Exception:
+                    downloaded_paths.append(str(save_path))
                 continue
 
             # Download image
@@ -290,7 +294,11 @@ def download_images(
             )
 
             if success:
-                downloaded_paths.append(str(save_path))
+                try:
+                    rel_path = save_path.relative_to(config.BASE_DIR)
+                    downloaded_paths.append(f"./{rel_path.as_posix()}")
+                except Exception:
+                    downloaded_paths.append(str(save_path))
                 downloader.stats['images_downloaded'] += 1
                 logger.debug(f"✓ Saved: {save_path}")
             else:
@@ -459,7 +467,7 @@ def download_audio(
             raise ValueError("Either soup or post_url must be provided")
         soup = scraper.get_html(post_url)
 
-    # Determine save directory
+    # Determine save directory (./audio/)
     if save_dir is None:
         save_dir = config.AUDIO_DIR
     save_dir.mkdir(parents=True, exist_ok=True)
@@ -488,7 +496,11 @@ def download_audio(
         # Skip if already exists
         if save_path.exists() and save_path.stat().st_size > 0:
             logger.info(f"Audio already exists: {filename}")
-            return str(save_path)
+            try:
+                rel_path = save_path.relative_to(config.BASE_DIR)
+                return f"./{rel_path.as_posix()}"
+            except Exception:
+                return str(save_path)
 
         # Download audio
         logger.info(f"Downloading audio: {filename}")
@@ -503,7 +515,11 @@ def download_audio(
         if success:
             downloader.stats['audio_downloaded'] += 1
             logger.info(f"✓ Audio saved: {save_path}")
-            return str(save_path)
+            try:
+                rel_path = save_path.relative_to(config.BASE_DIR)
+                return f"./{rel_path.as_posix()}"
+            except Exception:
+                return str(save_path)
         else:
             downloader.stats['audio_failed'] += 1
             logger.warning(f"✗ Failed to download audio: {audio_url}")
@@ -676,7 +692,6 @@ def download_all_media(
 
     results = {
         'post_id': post_id,
-        'post_url': post_url,
         'images': [],
         'audio': None,
         'errors': []

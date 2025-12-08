@@ -558,6 +558,14 @@ Custom log file:
 python main.py --log-file /path/to/custom.log
 ```
 
+### Console UI (interactive)
+
+Run the guided console UI (prompts for 3 category URLs and per-category post count; requires total >= 100):
+```bash
+python -m console_ui
+```
+The UI validates URLs, creates required directories, runs the crawler, and reports whether any post exceeds 20 comments. If no 20+ comment post is found or fewer than 100 posts are scraped, it shows a warning.
+
 ### Error Handling
 
 Strict mode (fail on first error):

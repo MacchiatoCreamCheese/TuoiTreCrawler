@@ -337,6 +337,7 @@ def crawl_posts(args: argparse.Namespace, logger: logging.Logger) -> Dict[str, A
             logger.info(f"[{i}/{len(category_urls)}] Category: {category_url}")
 
             try:
+                category_slug = category_url.rstrip('/').split('/')[-1].replace('.htm', '')
                 post_urls = get_category_post_urls(
                     scraper,
                     category_url,
@@ -344,7 +345,7 @@ def crawl_posts(args: argparse.Namespace, logger: logging.Logger) -> Dict[str, A
                     max_pages=10
                 )
 
-                all_post_urls.extend(post_urls)
+                all_post_urls.extend([(category_slug, url) for url in post_urls])
                 logger.info(f"  Found {len(post_urls)} posts")
 
             except Exception as e:
@@ -358,7 +359,7 @@ def crawl_posts(args: argparse.Namespace, logger: logging.Logger) -> Dict[str, A
         logger.info("STEP 2: Scraping posts...")
         logger.info("-" * 60)
 
-        for i, post_url in enumerate(all_post_urls, 1):
+        for i, (category_slug, post_url) in enumerate(all_post_urls, 1):
             try:
                 current_progress = i
                 show_progress(current_progress, len(all_post_urls), f"Post {i}")
@@ -404,14 +405,17 @@ def crawl_posts(args: argparse.Namespace, logger: logging.Logger) -> Dict[str, A
                         logger.warning(f"  Media download failed for {post_id}: {e}")
 
                 # Format complete post data
+                # Prefer category from crawl source when available
+                category_value = category_slug or post_details.get('category')
+
                 post_data = format_post_data(
                     post_id=post_id,
                     title=post_details.get('title', ''),
                     content=post_details.get('content', ''),
                     author=post_details.get('author'),
                     date=post_details.get('publishDate'),
-                    category=post_details.get('category'),
-                    audio_url=media_paths.get('audio'),
+                    category=category_value,
+                    audio_podcast=media_paths.get('audio'),
                     vote_reactions=vote_reactions,
                     comments=comments,
                     url=post_url,

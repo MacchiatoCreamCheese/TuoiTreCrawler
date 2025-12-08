@@ -138,6 +138,10 @@ def validate_post_data(post_data: Dict[str, Any]) -> tuple[bool, List[str]]:
         if not isinstance(post_data['vote_reactions'], dict):
             errors.append("vote_reactions must be a dict")
 
+    if 'audio_podcast' in post_data and post_data['audio_podcast'] is not None:
+        if not isinstance(post_data['audio_podcast'], str):
+            errors.append("audio_podcast must be a string")
+
     if 'comments' in post_data and post_data['comments'] is not None:
         if not isinstance(post_data['comments'], list):
             errors.append("comments must be a list")
@@ -367,7 +371,7 @@ def format_post_data(
     author: Optional[str] = None,
     date: Optional[str] = None,
     category: Optional[str] = None,
-    audio_url: Optional[str] = None,
+    audio_podcast: Optional[str] = None,
     vote_reactions: Optional[Dict[str, int]] = None,
     comments: Optional[List[Dict[str, Any]]] = None,
     **kwargs
@@ -382,7 +386,7 @@ def format_post_data(
         author: Post author
         date: Publication date
         category: Post category
-        audio_url: URL to audio file (if any)
+        audio_podcast: URL to audio file (if any)
         vote_reactions: Vote reactions dictionary
         comments: List of comments
         **kwargs: Additional fields to include
@@ -390,15 +394,22 @@ def format_post_data(
     Returns:
         Formatted post data dictionary
     """
+    # Normalize content: we only keep text for JSON export to reduce size
+    clean_content = content
+    if isinstance(content, dict):
+        clean_content = {
+            'text': content.get('text', '')
+        }
+
     # Build base structure
     data = {
         'postId': str(post_id),
         'title': clean_text(title) if title else '',
-        'content': content,
+        'content': clean_content,
         'author': author,
         'date': date,
         'category': category,
-        'audio_url': audio_url,
+        'audio_podcast': audio_podcast,
         'vote_reactions': vote_reactions or {},
         'comments': comments or []
     }

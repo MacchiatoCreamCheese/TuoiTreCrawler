@@ -50,12 +50,14 @@ FALLBACK_ENCODINGS = ['utf-8', 'latin-1', 'cp1252']
 # Data storage paths (outside src/)
 DATA_DIR = BASE_DIR / 'data'
 METADATA_DIR = DATA_DIR / 'metadata'  # For JSON metadata files
-AUDIO_DIR = DATA_DIR / 'audio'        # For audio files
-IMAGES_DIR = DATA_DIR / 'images'      # For image files
+JSON_OUTPUT_DIR = METADATA_DIR
+
+# Media storage paths (flat at project root per requirements)
+AUDIO_DIR = BASE_DIR / 'audio'        # For audio files (./audio/<postId>.<ext>)
+IMAGES_DIR = BASE_DIR / 'images'      # For image files (./images/<postId>/...)
 
 # Legacy compatibility (media dir kept for possible grouping)
 MEDIA_DIR = DATA_DIR / 'media'
-JSON_OUTPUT_DIR = METADATA_DIR
 
 # Media download settings
 DOWNLOAD_IMAGES = True
