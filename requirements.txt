@@ -1,0 +1,23 @@
+# Core HTTP and web scraping dependencies
+requests==2.31.0
+beautifulsoup4==4.12.3
+# lxml>=5.1.0  # Fast XML/HTML parser for BeautifulSoup - REMOVED (causes build issues on Windows, using html.parser instead)
+
+# User agent rotation
+fake-useragent==1.4.0
+
+# Configuration management
+pyyaml==6.0.1
+
+# Additional helpful dependencies
+urllib3==2.1.0  # URL handling and connection pooling
+certifi==2024.2.2  # SSL certificate verification
+charset-normalizer==3.3.2  # Character encoding detection for Vietnamese text
+
+# Utility libraries
+python-dateutil==2.8.2  # Date parsing and handling
+pytz==2024.1  # Timezone handling for timestamps
+
+# Optional: For async support (if needed later)
+# aiohttp==3.9.1
+# aiofiles==23.2.1
