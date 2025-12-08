@@ -179,32 +179,6 @@ def get_file_extension(url: str) -> str:
     return ext.lower()
 
 
-def estimate_media_type(url: str) -> str:
-    """
-    Estimate media type from URL
-
-    Args:
-        url: Media URL
-
-    Returns:
-        Media type ('image', 'audio', 'video', or 'unknown')
-    """
-    ext = get_file_extension(url)
-
-    image_exts = {'jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'bmp', 'ico'}
-    audio_exts = {'mp3', 'wav', 'ogg', 'm4a', 'aac', 'flac'}
-    video_exts = {'mp4', 'webm', 'avi', 'mov', 'flv', 'mkv', 'wmv'}
-
-    if ext in image_exts:
-        return 'image'
-    elif ext in audio_exts:
-        return 'audio'
-    elif ext in video_exts:
-        return 'video'
-    else:
-        return 'unknown'
-
-
 def calculate_delay(min_delay: float, max_delay: float) -> float:
     """
     Calculate random delay for rate limiting

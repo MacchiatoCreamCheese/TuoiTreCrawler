@@ -32,13 +32,6 @@ class MediaDownloadError(CrawlerException):
         super().__init__(message)
 
 
-class EncodingError(CrawlerException):
-    """Raised when encoding/decoding Vietnamese text fails"""
-    def __init__(self, message: str, encoding: str = None):
-        self.encoding = encoding
-        super().__init__(message)
-
-
 class ValidationError(CrawlerException):
     """Raised when data validation fails"""
     def __init__(self, message: str, field: str = None, value: any = None):
@@ -52,8 +45,3 @@ class RateLimitError(CrawlerException):
     def __init__(self, message: str, retry_after: int = None):
         self.retry_after = retry_after
         super().__init__(message)
-
-
-class ConfigurationError(CrawlerException):
-    """Raised when configuration is invalid"""
-    pass
