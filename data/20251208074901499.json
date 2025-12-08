@@ -10,7 +10,38 @@
   "category": "chia-khoa-cua-su-minh-bach-20251208074901499",
   "audio_url": null,
   "vote_reactions": {},
-  "comments": [],
+  "comments": [
+    {
+      "commentId": "91ae16b5-fe42-40f6-bcb6-27a2d8b66916",
+      "author": "Toi",
+      "text": "Tôi cho rằng đây là bước đi hợp lý của cơ quan có thẩm quyền",
+      "date": "2025-12-08T18:03:33.6561793",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "4cd3c40d-ffd7-404d-a7de-23b4ba8e001b",
+      "author": "Dan Tri",
+      "text": "Mong",
+      "date": "2025-12-08T18:01:52.2684024",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "c03df5a9-784f-46fa-b8f2-1da306be818e",
+      "author": "Ngân",
+      "text": "Liệu có thể giao hết cho trung tâm này, bao gồm cả việc xác thực tính hợp pháp của hợp đồng không. Tôi chưa thấy nhưng có vẻ đây là ý tưởng mới, hay nhưng tương đối khó khả thi.",
+      "date": "2025-12-08T18:06:14.6946066",
+      "vote_react_list": {
+        "sad": 1,
+        "wow": 1
+      },
+      "replies": [],
+      "depth": 0
+    }
+  ],
   "url": "https://tuoitre.vn/chia-khoa-cua-su-minh-bach-20251208074901499.htm",
   "description": "Ai từng đi mua nhà đất hẳn đều đã trải qua cảm giác vừa hồi hộp vừa lúng túng: tay ôm bộ hồ sơ, đầu lo không biết mảnh đất này có vướng tranh chấp gì không, chân thì chạy từ công chứng rồi sang văn phòng đăng ký.",
   "tags": [],
@@ -24,9 +55,9 @@
     "audio": null,
     "errors": []
   },
-  "comment_count": 0,
+  "comment_count": 3,
   "metadata": {
-    "crawled_at": "2025-12-08T12:03:55.952035",
+    "crawled_at": "2025-12-08T20:44:55.978837",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

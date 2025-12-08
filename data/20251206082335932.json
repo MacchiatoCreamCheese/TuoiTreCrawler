@@ -13,19 +13,29 @@
   "comments": [
     {
       "commentId": "129af68c-fd4c-43fa-92fb-edb3136d5d68",
-      "author": "Anonymous",
+      "author": "Đình Bách",
       "text": "Tui tin là ông Trump sẽ thắng kiện vì từ hôm nhậm chức đến nay, những lệnh hành pháp vi hiến của ông đưa ra, dù bị kiện tụng ở tòa án cấp dưới nhưng khi đưa lên Tòa Án Tối Cao để kháng án thì lần nào tòa án tối cao cũng cho ông thắng kiện, dễ hiểu vì các thẩm phán tối cao ở tòa này chiếm đa số là người ông đề cử và thuộc đảng cộng hòa",
       "date": "2025-12-06T10:53:09.3088165",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "like": 3,
+        "love": 3,
+        "wow": 1,
+        "sad": 1
+      },
       "replies": [],
       "depth": 0
     },
     {
       "commentId": "64e8b96f-4936-46b8-96cd-7ccf46af1760",
-      "author": "Anonymous",
+      "author": "thie****@gmail.com",
       "text": "Lãnh thổ nước Mỹ quá rộng lớn. Cho đến nay dân số vẫn ít. Thời lập quốc, các nhà lập pháp, muốn có dân để phát triển kinh tế và bảo vệ đất nước. Nên có Tu chính án (Hiến pháp) quy định, cứ sinh ra ở Mỹ, mặc nhiên có quốc tịch Mỹ. Kinh tế nước Mỹ phát trển nhất thế giới. Dân khắp nơi coi đây là thiên đường. Lợi dụng Tu chính án của Mỹ, đàn bà chọn Mỹ là nơi đẻ con. Con đủ 18 tuổi, bảo lãnh cho mẹ...Đến Mỹ để hưởng phúc lợi. Phát hiện ra điều này. Ông Trump muốn bãi bỏ quyền hiến định mặc nhiên. Thành công hay không, cũng cảnh báo, trục lợi phúc lợi của Mỹ ngày càng khó.",
       "date": "2025-12-06T10:04:20.8076289",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "like": 5,
+        "love": 7,
+        "wow": 1,
+        "sad": 1
+      },
       "replies": [],
       "depth": 0
     }
@@ -48,7 +58,7 @@
   },
   "comment_count": 2,
   "metadata": {
-    "crawled_at": "2025-12-08T12:09:25.050976",
+    "crawled_at": "2025-12-08T20:50:35.186894",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

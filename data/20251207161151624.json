@@ -13,7 +13,7 @@
   "comments": [
     {
       "commentId": "85763d0f-88c6-4b11-9cec-dc8d75747764",
-      "author": "Anonymous",
+      "author": "nguy****@gmail.com",
       "text": "Từ năm ngoái thấy Thiên Long tung ra nhiều sản phẩm rất bắt mắt, giá thành cũng hợp lý, ngang ngửa Deli của Trung Quốc. Đang rất mừng cho Thiên Long mà nay nghe tin này thấy cũng tiếc nuối cho thương hiệu Việt.",
       "date": "2025-12-08T11:54:26.906688",
       "vote_react_list": {},
@@ -22,7 +22,7 @@
     },
     {
       "commentId": "19ae0b77-6181-46b1-a611-7a0b00f6a928",
-      "author": "Anonymous",
+      "author": "Lam",
       "text": "Làm không nổi thì nên để người khác làm, các thường hiệu lớn của VN sẽ từ từ lui vào dĩ vãng hết, dân VN sẽ toàn sử dụng đồ ngoại, hàng VN chất lượng cao chỉ còn là hoài niệm.",
       "date": "2025-12-08T09:40:31.9330588",
       "vote_react_list": {},
@@ -31,46 +31,62 @@
     },
     {
       "commentId": "c4924fab-3c1b-4043-ab7b-c4d2e0d5391e",
-      "author": "Anonymous",
+      "author": "zulu****@gmail.com",
       "text": "Nếu bán dưới 50% thì có thể là định hướng phát triển ra bên ngoài nhờ các kênh phân phối của họ. Còn đây TLG bán 65% là bán 100% quyền quyết định tất cả cho người ta rồi còn gì nữa.<br/>Nhưng đây là quy luật thị trường, cá lớn nuốt cá bé. Nếu coi đây là thương hiệu quốc gia thì ngân sách phải bỏ ra để giữ lại phần tỷ lệ đa số, còn ko thì phải chấp nhận.",
       "date": "2025-12-08T04:30:51.8939701",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "like": 2
+      },
       "replies": [],
       "depth": 0
     },
     {
       "commentId": "5adc7624-d56b-403a-826a-9904ec9b6f40",
-      "author": "Anonymous",
+      "author": "thin****@gmail.com",
       "text": "Chúc mừng Thiên Long. Chúc quý công ty tiếp tục thành công trong ngôi nhà mới!",
       "date": "2025-12-07T20:01:35.1384871",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "like": 1
+      },
       "replies": [],
       "depth": 0
     },
     {
       "commentId": "87886cde-3060-4db9-84a4-8322bb1820d3",
-      "author": "Anonymous",
+      "author": "Hj",
       "text": "Nếu doanh nghiệp trong nước nào cũng xây dựng được tiềm lực và bán được giá cao như Thiên Long há chẳng tốt sao! Ngoại trừ những ngành nghề đặc biệt quan trọng, an ninh quốc gia, công nghệ lõi, các ngành khác bán được giá tốt sao không bán?",
       "date": "2025-12-07T17:51:28.4998578",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "like": 2,
+        "love": 2
+      },
       "replies": [],
       "depth": 0
     },
     {
       "commentId": "7f8c8fc7-4449-477d-b947-669eef10a1b7",
-      "author": "Anonymous",
+      "author": "tran****@gmail.com",
       "text": "Phần lớn xây dựng thương hiệu chờ một thời gian có tập đoàn nước ngoài nào mua với giá cao thì lại bán, đó cũng là lí do khó vươn mình trên thế giới.",
       "date": "2025-12-07T18:23:02.3299978",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "like": 1,
+        "love": 2,
+        "wow": 1,
+        "angry": 1,
+        "sad": 1
+      },
       "replies": [],
       "depth": 0
     },
     {
       "commentId": "2a046d96-71b9-4217-88e5-5746b45307d2",
-      "author": "Anonymous",
+      "author": "Hà Vân",
       "text": "Cái sức Việt tới đấy thôi, đã thấy nhiều rồi, không có gì phải tếc nuối, hiểu được sức mình là quan trọng, không phải ráng.",
       "date": "2025-12-07T18:04:12.5502627",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "like": 3,
+        "love": 4
+      },
       "replies": [],
       "depth": 0
     }
@@ -91,7 +107,7 @@
   },
   "comment_count": 7,
   "metadata": {
-    "crawled_at": "2025-12-08T12:12:34.647589",
+    "crawled_at": "2025-12-08T20:53:55.694209",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

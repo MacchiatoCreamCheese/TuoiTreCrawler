@@ -12,11 +12,30 @@
   "vote_reactions": {},
   "comments": [
     {
+      "commentId": "73a18080-f155-4859-9bca-659b6259182f",
+      "author": "Liem",
+      "text": "Có quan tâm sâu sát mới thấy ý kiến của các đại biểu rất thực tế và tâm đắc cho một không gian mở, tạo đà phát triển mạnh mẽ đối với đô thị lớn tầm cỡ như TP. HCM.",
+      "date": "2025-12-08T15:09:19.8926215",
+      "vote_react_list": {
+        "like": 2,
+        "love": 2,
+        "sad": 1,
+        "wow": 1
+      },
+      "replies": [],
+      "depth": 0
+    },
+    {
       "commentId": "0f1be106-f74f-4a34-9753-282eb7eb1596",
-      "author": "Anonymous",
+      "author": "Lê Văn Thuận",
       "text": "Tôi rất đồng tình với đề xuất của đại biểu Hoàng Văn Cường và đại biểu Trần Khánh Thu về cơ chế mới đối với TP.HCM.",
       "date": "2025-12-08T11:58:36.9546547",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "like": 3,
+        "love": 5,
+        "sad": 1,
+        "wow": 1
+      },
       "replies": [],
       "depth": 0
     }
@@ -35,9 +54,9 @@
     "audio": null,
     "errors": []
   },
-  "comment_count": 1,
+  "comment_count": 2,
   "metadata": {
-    "crawled_at": "2025-12-08T12:14:09.001714",
+    "crawled_at": "2025-12-08T20:53:22.238799",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

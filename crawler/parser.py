@@ -207,7 +207,7 @@ def _build_comment_tree(comments_data: List[Dict[str, Any]], max_depth: int) -> 
         parent_id = comment_data.get('parent_id', '0')
 
         if parent_id and parent_id != '0' and parent_id in comments_by_id:
-            comment_id = comment_data.get('id') or comment_data.get('user_id', '')
+            comment_id = comment_data.get('id', '')  # Use the UUID as unique identifier
 
             if comment_id and comment_id in comments_by_id:
                 child_comment = comments_by_id[comment_id]
@@ -232,26 +232,55 @@ def _normalize_api_comment(comment_data: Dict[str, Any]) -> Optional[Dict[str, A
     """
     try:
         # Extract fields from API response
-        comment_id = comment_data.get('id') or comment_data.get('user_id', '')
+        comment_id = comment_data.get('id', '')  # UUID is the unique identifier
         content = comment_data.get('content', '')
-        user_id = comment_data.get('user_id', '')
-        user_name = comment_data.get('user_name') or comment_data.get('full_name', 'Anonymous')
+        sender_fullname = comment_data.get('sender_fullname', 'Anonymous')
         created_date = comment_data.get('created_date', '')
         parent_id = comment_data.get('parent_id', '0')
 
         # Calculate depth based on parent_id
-        depth = 0 if parent_id == '0' else 1
+        depth = 0 if parent_id == '0' or parent_id is None else 1
 
-        # Vote reactions (if available)
+        # Vote reactions from the reactions object and individual fields
         vote_react_list = {}
-        if 'total_like' in comment_data:
-            vote_react_list['like'] = comment_data.get('total_like', 0)
-        if 'total_dislike' in comment_data:
-            vote_react_list['dislike'] = comment_data.get('total_dislike', 0)
+
+        # Try to get from reactions object
+        reactions = comment_data.get('reactions', {})
+        if reactions:
+            # Reaction types: 1=like, 3=love, 5=haha, 7=wow, 9=sad, 11=angry, 13=star
+            reaction_map = {
+                '1': 'like',
+                '3': 'love',
+                '5': 'haha',
+                '7': 'wow',
+                '9': 'sad',
+                '11': 'angry',
+                '13': 'star'
+            }
+            for key, name in reaction_map.items():
+                count = reactions.get(key, 0)
+                if count and count > 0:
+                    vote_react_list[name] = count
+
+        # Also add individual reaction counts if available
+        if comment_data.get('loves'):
+            vote_react_list['love'] = comment_data.get('loves', 0)
+        if comment_data.get('likes'):
+            vote_react_list['like'] = comment_data.get('likes', 0)
+        if comment_data.get('hahas'):
+            vote_react_list['haha'] = comment_data.get('hahas', 0)
+        if comment_data.get('wows'):
+            vote_react_list['wow'] = comment_data.get('wows', 0)
+        if comment_data.get('sads'):
+            vote_react_list['sad'] = comment_data.get('sads', 0)
+        if comment_data.get('wraths'):
+            vote_react_list['angry'] = comment_data.get('wraths', 0)
+        if comment_data.get('stars'):
+            vote_react_list['star'] = comment_data.get('stars', 0)
 
         return {
             'commentId': comment_id or generate_unique_id(),
-            'author': clean_text(user_name),
+            'author': clean_text(sender_fullname),
             'text': clean_text(content),
             'date': created_date,
             'vote_react_list': vote_react_list,

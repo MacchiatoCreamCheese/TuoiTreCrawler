@@ -12,8 +12,35 @@
   "vote_reactions": {},
   "comments": [
     {
+      "commentId": "b5c67993-12b4-47fb-b717-aa948afc7a39",
+      "author": "LAP",
+      "text": "Đề xuất TPHCM nghiên cứu gộp tuyến metro số 2 (Thủ Thiêm - Tham Lương) với tuyến metro Thủ Thiêm - Long Thành thành một tuyến xuyên suốt, hai tuyến này có chung hướng di chuyển từ ga Thủ Thiêm đến sát sông Đồng Nai trước khi qua địa phận tỉnh Đồng Nai. Ngoài ra còn có thể kết hợp sử dụng chung depot Long Trường, việc kết nối thành một tuyến xuyên suốt có thể nghiên cứu khai thác đoàn tàu tốc hành (tàu dừng ga trọng điểm) giảm thời gian di chuyển kết nối hành khách hai sân bay. <br/>Đề xuất này có quãng đường di chuyển ngắn hơn đề xuất của tỉnh Đồng Nai và góp phần tăng tính kết nối khu vực hiệu quả hơn. Mong quý lãnh đạo TP xem xét đề xuất này.",
+      "date": "2025-12-08T19:13:47.3869882",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "cfc23f9a-3e28-4501-ab69-45037be7004f",
+      "author": "tran****@gmail.com",
+      "text": "Đề nghị Thủ tướng Chính phủ và Quốc Hội sớm duyệt cơ chế đặc thù tuyến đường metro Bến Thành - Suối Tiên về trung tâm tỉnh Đồng Nai và tuyến đường sắt Thủ Thiêm - Long Thành để khai thác tối đa sân bay Long Thành.",
+      "date": "2025-12-08T18:39:13.0474796",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "d87c9058-a630-42af-a7aa-06ea3d37f797",
+      "author": "Khoa",
+      "text": "Từ TP HCM đi Sân bay Long Thành mất 40 phút là quá lạc hậu, tốn kinh phí chưa tương xứng với tiềm năng, chưa tính tới sự phát triển trong tương lai.",
+      "date": "2025-12-08T16:44:48.0623592",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
       "commentId": "8037be25-d71d-4e83-8a91-5a07543d7f21",
-      "author": "Anonymous",
+      "author": "tung****@gmail.com",
       "text": "Không biết từ lúc đề xuất đến lúc bắt đầu khởi công mất bao lâu và tới bao giờ sẽ hoàn thành? Metro kết nối sân bay Long Thành với thành phố Hồ Chí Minh góp thêm giá trị gia tăng rất lớn cho sân bay Long Thành.",
       "date": "2025-12-08T11:15:07.8627287",
       "vote_react_list": {},
@@ -22,28 +49,36 @@
     },
     {
       "commentId": "9153ae80-1c43-4a0f-8213-356413801efd",
-      "author": "Anonymous",
+      "author": "Trung Hieu",
       "text": "Đề xuất rất hay và đúng của Đồng Nai, tốc độ tàu chạy phải nhanh, không ngừng để rút ngắn thời gian cho hành khách",
       "date": "2025-12-08T06:10:07.8643993",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "love": 2
+      },
       "replies": [],
       "depth": 0
     },
     {
       "commentId": "777b40d9-d702-4e86-9e13-618dc0acf5eb",
-      "author": "Anonymous",
+      "author": "Nguyễn Viết Quốc",
       "text": "Đề xuất này của Tỉnh Đồng Nai tôi thấy hoàn toàn đúng đắn và có cơ sở. Làm được tuyến này sẽ kết nối rất tốt và sẽ có nhiều khách đi lại, giảm được tình trạng ùn tắc giao thông.",
       "date": "2025-12-07T21:58:43.8244337",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "like": 3,
+        "love": 3
+      },
       "replies": [],
       "depth": 0
     },
     {
       "commentId": "6f5c3647-8245-4837-8ac6-fbd5d16f1ae3",
-      "author": "Anonymous",
+      "author": "Tran",
       "text": "Bộ Ngành nên hỗ trợ điều kiện tốt nhất để Đồng Nai phát triển nhanh!",
       "date": "2025-12-07T19:21:11.579106",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "like": 1,
+        "love": 3
+      },
       "replies": [],
       "depth": 0
     }
@@ -62,9 +97,9 @@
     "audio": null,
     "errors": []
   },
-  "comment_count": 4,
+  "comment_count": 7,
   "metadata": {
-    "crawled_at": "2025-12-08T12:13:55.396374",
+    "crawled_at": "2025-12-08T20:54:27.336948",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

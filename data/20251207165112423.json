@@ -13,10 +13,13 @@
   "comments": [
     {
       "commentId": "ef79bc53-9e3e-4f3b-a44e-172a9cebbdbb",
-      "author": "Anonymous",
+      "author": "pkda****@gmail.com",
       "text": "Có rất nhiều lý do để các tỷ phú Ấn Độ tổ chức đám cưới tại Phú Quốc. Thứ nhất là về vấn đề an ninh. Thứ hai là Phú Quốc hội tụ đầy đủ các yếu tố của một đám cưới. Phong cảnh thì lãng mạn, có biển có rừng và những khu vui chơi giải trí có tầm cỡ thế giới, công tác phục vụ rất bài bản và chuyên nghiệp. Thứ ba là sự riêng tư được đặt lên hàng đầu khi chọn Phú Quốc mà không có bất kỳ sự đụng chạm nào với bản địa",
       "date": "2025-12-08T08:00:31.6698733",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "like": 2,
+        "love": 4
+      },
       "replies": [],
       "depth": 0
     }
@@ -42,7 +45,7 @@
   },
   "comment_count": 1,
   "metadata": {
-    "crawled_at": "2025-12-08T12:12:24.590313",
+    "crawled_at": "2025-12-08T20:53:50.840054",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

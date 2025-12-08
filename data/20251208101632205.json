@@ -10,7 +10,26 @@
   "category": "de-xuat-ha-noi-co-the-cuong-che-pha-do-cai-tao-chung-cu-cu-neu-dong-thuan-tren-75-20251208101632205",
   "audio_url": null,
   "vote_reactions": {},
-  "comments": [],
+  "comments": [
+    {
+      "commentId": "fe176fff-91ed-46b5-9e7c-875dad6e9950",
+      "author": "PRESIDENT",
+      "text": "Họp các cư dân chung cư và giơ tay biểu quyết , áp dụng qui tắc đa số thắng thiểu số.",
+      "date": "2025-12-08T15:06:28.4638547",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "6fedd5a9-4d9b-40bd-927e-02bea454c793",
+      "author": "Vũ Thị Toàn",
+      "text": "Đạt trên 50% là tốt rồi, người dân đang rất mong HN có phương án phù hợp trong việc XD lại chung cư cũ để người dân có chỗ ở an toàn và đồng bộ với kiến trúc thủ đô",
+      "date": "2025-12-08T13:23:01.0749395",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    }
+  ],
   "url": "https://tuoitre.vn/de-xuat-ha-noi-co-the-cuong-che-pha-do-cai-tao-chung-cu-cu-neu-dong-thuan-tren-75-20251208101632205.htm",
   "description": "Theo dự thảo, UBND TP Hà Nội quyết định biện pháp cưỡng chế trong các trường hợp chủ đầu tư đã được trên 75% các chủ sở hữu nhà, người sử dụng đất tương đương ít nhất là 75% diện tích khu vực cải tạo, chỉnh trang, tái thiết đô thị đồng thuận.",
   "tags": [],
@@ -26,9 +45,9 @@
     "audio": null,
     "errors": []
   },
-  "comment_count": 0,
+  "comment_count": 2,
   "metadata": {
-    "crawled_at": "2025-12-08T12:02:32.022397",
+    "crawled_at": "2025-12-08T20:44:26.992165",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }
