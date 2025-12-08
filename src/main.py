@@ -521,6 +521,12 @@ def main():
     # Setup logging
     logger = setup_logging(args.log_level)
 
+    # Apply strict mode to runtime flags (fail fast)
+    if args.strict:
+        config.SKIP_ON_ERROR = False
+        config.GRACEFUL_DEGRADATION = False
+        config.SAVE_PARTIAL_DATA = False
+
     # Create necessary directories
     try:
         config.create_directories()

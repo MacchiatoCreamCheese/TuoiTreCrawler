@@ -94,7 +94,7 @@ def _extract_post_id_from_url(post_url: str) -> Optional[str]:
     Returns:
         Post ID or None if not found
     """
-    match = re.search(r'-(\d{10,})\.htm', post_url)
+    match = re.search(r'-(\d+)\.htm', post_url)
     if match:
         return match.group(1)
     return None
@@ -129,11 +129,13 @@ def _fetch_comments_from_api(scraper, post_id: str, post_url: str) -> List[Dict[
             }
 
             logger.debug(f"Fetching comments page {page_index} from API")
-            response = scraper.session.get(api_url, headers=headers, timeout=config.REQUEST_TIMEOUT)
-
-            if response.status_code != 200:
-                logger.warning(f"Comment API returned status {response.status_code}")
-                break
+            response = scraper._make_request(
+                api_url,
+                method='GET',
+                headers=headers,
+                timeout=config.REQUEST_TIMEOUT,
+                stream=False
+            )
 
             # Parse JSON response
             data = response.json()
@@ -195,6 +197,7 @@ def _build_comment_tree(comments_data: List[Dict[str, Any]], max_depth: int) -> 
         comment = _normalize_api_comment(comment_data)
         if comment:
             comment_id = comment['commentId']
+            comment['depth'] = 0  # default until we attach children
             comments_by_id[comment_id] = comment
 
             # Check if top-level (parent_id is "0" or None)
@@ -213,9 +216,22 @@ def _build_comment_tree(comments_data: List[Dict[str, Any]], max_depth: int) -> 
                 child_comment = comments_by_id[comment_id]
                 parent_comment = comments_by_id[parent_id]
 
+                # Determine depth from parent
+                parent_depth = parent_comment.get('depth', 0)
+                child_depth = parent_depth + 1
+
                 # Check depth limit
-                if child_comment.get('depth', 0) <= max_depth:
+                if child_depth <= max_depth:
+                    child_comment['depth'] = child_depth
                     parent_comment['replies'].append(child_comment)
+
+    def _propagate_depths(nodes: List[Dict[str, Any]], current_depth: int = 0):
+        for node in nodes:
+            node['depth'] = current_depth
+            if node.get('replies'):
+                _propagate_depths(node['replies'], current_depth + 1)
+
+    _propagate_depths(top_level, 0)
 
     return top_level
 

@@ -1,7 +1,6 @@
 # Core HTTP and web scraping dependencies
 requests==2.31.0
 beautifulsoup4==4.12.3
-# lxml>=5.1.0  # Fast XML/HTML parser for BeautifulSoup - REMOVED (causes build issues on Windows, using html.parser instead)
 
 # User agent rotation
 fake-useragent==1.4.0

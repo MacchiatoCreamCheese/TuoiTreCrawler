@@ -91,12 +91,6 @@ class TuoiTreScraper:
 
         self.last_request_time = time.time()
 
-    @retry_on_error(
-        max_retries=3,
-        delay=1.0,
-        backoff=2.0,
-        exceptions=(RequestException, NetworkError)
-    )
     def _make_request(
         self,
         url: str,
@@ -129,28 +123,43 @@ class TuoiTreScraper:
         if 'timeout' not in kwargs:
             kwargs['timeout'] = self.timeout
 
-        try:
-            logger.debug(f"{method} {url}")
-            response = self.session.request(method, url, **kwargs)
+        attempts = self.max_retries
+        delay = 1.0
 
-            # Check for rate limiting
-            if response.status_code == 429:
-                retry_after = int(response.headers.get('Retry-After', 60))
-                raise RateLimitError(
-                    f"Rate limited by server",
-                    retry_after=retry_after
-                )
+        for attempt in range(attempts + 1):
+            try:
+                logger.debug(f"{method} {url}")
+                response = self.session.request(method, url, **kwargs)
 
-            # Raise for HTTP errors
-            response.raise_for_status()
+                # Handle rate limiting
+                if response.status_code == 429:
+                    retry_after = int(response.headers.get('Retry-After', 60))
+                    raise RateLimitError(
+                        f"Rate limited by server",
+                        retry_after=retry_after
+                    )
 
-            logger.debug(f"Response: {response.status_code} ({len(response.content)} bytes)")
-            return response
+                response.raise_for_status()
+                logger.debug(f"Response: {response.status_code} ({len(response.content)} bytes)")
+                return response
 
-        except (Timeout, ConnectionError, RequestException) as e:
-            error = handle_network_error(e, url)
-            logger.error(f"Request failed: {error}")
-            raise error
+            except RateLimitError as e:
+                # Respect server-provided retry hint when available
+                sleep_for = e.retry_after or delay
+                logger.warning(f"Rate limited, retrying in {sleep_for}s (attempt {attempt + 1}/{attempts})")
+                if attempt == attempts:
+                    raise
+                time.sleep(sleep_for)
+                delay *= 2
+
+            except (Timeout, ConnectionError, RequestException) as e:
+                error = handle_network_error(e, url)
+                logger.error(f"Request failed: {error}")
+                if attempt == attempts:
+                    raise error
+                logger.warning(f"Retrying in {delay:.1f}s (attempt {attempt + 1}/{attempts})")
+                time.sleep(delay)
+                delay *= 2
 
     def get_html(self, url: str) -> BeautifulSoup:
         """
