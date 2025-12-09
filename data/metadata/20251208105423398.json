@@ -11,6 +11,100 @@
   "vote_reactions": {},
   "comments": [
     {
+      "commentId": "a80527ed-95bf-41e0-b6b7-7d01b9edd05a",
+      "author": "QP",
+      "text": "Vote Nguyễn Tấn Sang - huân chương lao động hạng nhất, VĐV Pencak Silat tham dự SEA Games 33 - huy chương vàng vô địch thế giới.",
+      "date": "2025-12-09T09:49:18.3839514",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "8254324a-62c2-4c39-b737-692575d8a2d4",
+      "author": "Đoàn Ngọc lâm",
+      "text": "Tôi chọn bác sĩ Duy Py",
+      "date": "2025-12-09T10:04:13.5662892",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "049fdbb6-c50f-4901-861d-80d3b65d16b8",
+      "author": "Vu thì Huế",
+      "text": "Tôi chọn Trịnh Hải Thắng gương mặt trẻ tiêu biểu",
+      "date": "2025-12-09T09:35:35.591324",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "94cfb022-1ce6-49da-a400-8e6b7b15df1d",
+      "author": "Nguyễn Thị Phương",
+      "text": "Chọn K&#39;Duy Py",
+      "date": "2025-12-09T08:49:15.7275375",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "0334bb47-efba-4950-a33c-1ef0de249baa",
+      "author": "Nguyễn Thị Lan Chi",
+      "text": "Nrong K’Duy Py",
+      "date": "2025-12-09T09:37:57.5869548",
+      "vote_react_list": {
+        "love": 1
+      },
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "4a5232b1-2efe-4856-8c2d-ac473475a066",
+      "author": "Duyên Tran",
+      "text": "Duyên Quỳnh",
+      "date": "2025-12-09T08:03:52.021528",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "92b1549a-0007-4eea-a9d0-41d7d3df6bb4",
+      "author": "Duyên Tran",
+      "text": "Tôi rất thích Duyên Quỳnh",
+      "date": "2025-12-09T08:01:56.271841",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "f6c5ef86-ed15-4522-b95a-8c38ac1e52cd",
+      "author": "Mình Hợi",
+      "text": "Tôi chọn Trần Tài",
+      "date": "2025-12-08T23:44:41.1354215",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "5ad721ac-3300-40b2-a315-c1f13321e5c3",
+      "author": "Tha Ni",
+      "text": "Nrong K&#39; Duy Py",
+      "date": "2025-12-08T22:33:46.863378",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "92b5aa71-ba16-4a68-a885-8390aa1d6917",
+      "author": "Người hâm mộ bác sĩ",
+      "text": "Chọn Nròng K&#39;Duy Py tuyệt vời",
+      "date": "2025-12-08T22:02:38.5448601",
+      "vote_react_list": {
+        "love": 1
+      },
+      "replies": [],
+      "depth": 0
+    },
+    {
       "commentId": "b9e3da08-37f7-4c02-bd62-0751935aed87",
       "author": "Nguyễn Thị Ngọc Dang",
       "text": "Duyên Quỳnh",
@@ -61,6 +155,7 @@
       "text": "Chọn Nguyễn Tứ Cường, nhiều năm đạt Huy Chương Vàng - Thế Giới",
       "date": "2025-12-08T19:17:05.3072056",
       "vote_react_list": {
+        "love": 1,
         "sad": 1,
         "wow": 1
       },
@@ -95,7 +190,10 @@
       "text": "Chọn Nròng K Duy Py",
       "date": "2025-12-08T18:25:23.1119987",
       "vote_react_list": {
-        "love": 1
+        "like": 2,
+        "love": 6,
+        "sad": 3,
+        "wow": 3
       },
       "replies": [],
       "depth": 0
@@ -167,7 +265,9 @@
       "date": "2025-12-08T16:39:07.4883973",
       "vote_react_list": {
         "like": 4,
-        "love": 2
+        "love": 4,
+        "sad": 1,
+        "wow": 1
       },
       "replies": [],
       "depth": 0
@@ -273,9 +373,9 @@
     "audio": "./audio/20251208105423398.m4a",
     "errors": []
   },
-  "comment_count": 23,
+  "comment_count": 33,
   "metadata": {
-    "crawled_at": "2025-12-09T01:28:26.531682",
+    "crawled_at": "2025-12-09T13:54:39.978920",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

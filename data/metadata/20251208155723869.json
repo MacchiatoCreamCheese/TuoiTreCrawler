@@ -15,7 +15,9 @@
       "author": "HỮU NHÂN",
       "text": "Trốn khỏi địa phương được bao lâu? Tiền nộp phạt nhiều hơn tiền thu được đấy!",
       "date": "2025-12-08T18:22:28.1490904",
-      "vote_react_list": {},
+      "vote_react_list": {
+        "love": 1
+      },
       "replies": [],
       "depth": 0
     },
@@ -63,7 +65,7 @@
   },
   "comment_count": 4,
   "metadata": {
-    "crawled_at": "2025-12-09T01:23:12.527018",
+    "crawled_at": "2025-12-09T13:45:57.452022",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

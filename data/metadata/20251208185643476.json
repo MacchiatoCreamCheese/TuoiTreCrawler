@@ -9,7 +9,22 @@
   "category": "thoi-su",
   "audio_podcast": "./audio/20251208185643476.m4a",
   "vote_reactions": {},
-  "comments": [],
+  "comments": [
+    {
+      "commentId": "049fe812-a23c-4b52-972b-9d4304368785",
+      "author": "Lê Khoa",
+      "text": "Quốc lộ 62, Quốc lộ N2 đã xuống cấp nghiêm trọng, mặt đường rất xấu, trong khi lưu lượng giao thông hiện nay rất lớn, bao gồm tuyến hàng hoá lưu thông qua cửa khẩu Bình Hiệp và tuyến lưu thông kết nối với tỉnh Đồng Tháp. Vậy mà sao không thấy đề cập ưu tiên thực hiện việc sửa hay mở rộng? Trong khi nghe kế hoạch kế hoạch và kế hoạch bao năm rồi! Giao thông không thuận lợi thì không phát triển gì được cả.",
+      "date": "2025-12-09T06:38:36.792944",
+      "vote_react_list": {
+        "like": 1,
+        "love": 5,
+        "sad": 2,
+        "wow": 2
+      },
+      "replies": [],
+      "depth": 0
+    }
+  ],
   "url": "https://tuoitre.vn/thu-tuong-tay-ninh-uu-tien-tuyen-duong-noi-long-an-tan-ninh-va-tuyen-duong-ra-cua-khau-20251208185643476.htm",
   "description": "Chiều 8-12, Thủ tướng Phạm Minh Chính có buổi làm việc với Tỉnh ủy Tây Ninh về tình hình phát triển kinh tế - xã hội năm 2025 và phương hướng, nhiệm vụ trọng tâm năm 2026.",
   "tags": [],
@@ -24,9 +39,9 @@
     "audio": "./audio/20251208185643476.m4a",
     "errors": []
   },
-  "comment_count": 0,
+  "comment_count": 1,
   "metadata": {
-    "crawled_at": "2025-12-09T01:13:22.423137",
+    "crawled_at": "2025-12-09T13:37:41.062450",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

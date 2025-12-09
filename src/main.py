@@ -6,6 +6,7 @@ Main entry point for the web crawler application
 
 import argparse
 import logging
+import re
 import sys
 import time
 from pathlib import Path
@@ -281,10 +282,11 @@ def crawl_posts(args: argparse.Namespace, logger: logging.Logger) -> Dict[str, A
     Returns:
         Dictionary with crawl results and statistics
     """
-    from crawler.scraper import TuoiTreScraper, get_category_post_urls, scrape_post_details, extract_vote_reactions
+    from crawler.scraper import TuoiTreScraper, get_category_post_urls, scrape_post_details, extract_vote_reactions, _is_valid_article_url
     from crawler.parser import extract_comments, validate_comment_count, get_comment_statistics
     from crawler.downloader import download_all_media
     from crawler.json_exporter import save_post_json, format_post_data, save_multiple_posts
+    from crawler.utils.helpers import normalize_url
 
     # Initialize statistics
     stats = {
@@ -295,6 +297,7 @@ def crawl_posts(args: argparse.Namespace, logger: logging.Logger) -> Dict[str, A
         'total_audio': 0,
         'posts_with_20plus_comments': 0,
         'failed_posts': 0,
+        'skipped_duplicates': 0,
         'start_time': time.time(),
         'posts_data': []
     }
@@ -333,36 +336,87 @@ def crawl_posts(args: argparse.Namespace, logger: logging.Logger) -> Dict[str, A
         logger.info("-" * 60)
 
         all_post_urls = []
+        global_seen_post_ids = set()
+
         for i, category_url in enumerate(category_urls, 1):
             logger.info(f"[{i}/{len(category_urls)}] Category: {category_url}")
 
             try:
                 category_slug = category_url.rstrip('/').split('/')[-1].replace('.htm', '')
-                post_urls = get_category_post_urls(
-                    scraper,
-                    category_url,
-                    max_posts=args.count,
-                    max_pages=10
-                )
+                category_unique_urls = []
+                current_page = 1
+                max_pages = 30  # Safety limit
 
-                all_post_urls.extend([(category_slug, url) for url in post_urls])
-                logger.info(f"  Found {len(post_urls)} posts")
+                while len(category_unique_urls) < args.count and current_page <= max_pages:
+                    # Construct pagination URL
+                    if current_page == 1:
+                        page_url = category_url
+                    else:
+                        base_url = category_url.replace('.htm', '')
+                        page_url = f"{base_url}-p{current_page}.htm"
+
+                    logger.info(f"  Fetching page {current_page}: {page_url}")
+                    try:
+                        soup = scraper.get_html(page_url)
+
+                        # Extract post URLs from the page
+                        articles = soup.find_all(['article', 'div'], class_=re.compile(r'(box-category-item|news-item|item-news)'))
+                        if not articles:
+                            articles = soup.find_all('h3', class_=re.compile(r'title-news'))
+
+                        page_new_urls = []
+                        for article in articles:
+                            link = article.find('a', href=True)
+                            if link and link.get('href'):
+                                href = link['href']
+                                full_url = normalize_url(href, category_url)
+
+                                if _is_valid_article_url(full_url):
+                                    match = re.search(r'-(\d+)\.htm', full_url)
+                                    post_id = match.group(1) if match else None
+
+                                    if post_id and post_id not in global_seen_post_ids:
+                                        global_seen_post_ids.add(post_id)
+                                        category_unique_urls.append(full_url)
+                                        page_new_urls.append(full_url)
+
+                                        if len(category_unique_urls) >= args.count:
+                                            break
+
+                        logger.info(f"  Found {len(page_new_urls)} new unique posts on page {current_page} (total: {len(category_unique_urls)}/{args.count})")
+
+                        if not page_new_urls:
+                            logger.warning(f"  No new posts found on page {current_page}, stopping pagination")
+                            break
+
+                        current_page += 1
+
+                    except Exception as e:
+                        logger.error(f"  Failed to fetch page {current_page}: {e}")
+                        if config.SKIP_ON_ERROR:
+                            break
+                        else:
+                            raise
+
+                all_post_urls.extend([(category_slug, url) for url in category_unique_urls])
+                logger.info(f"  ✓ Collected {len(category_unique_urls)} unique posts for {category_slug}")
 
             except Exception as e:
                 logger.error(f"  Failed to get URLs from {category_url}: {e}")
                 if not config.SKIP_ON_ERROR:
                     raise
 
-        logger.info(f"\n✓ Collected {len(all_post_urls)} post URLs total\n")
+        logger.info(f"\n✓ Collected {len(all_post_urls)} unique post URLs total\n")
 
         # Step 2: Scrape each post
         logger.info("STEP 2: Scraping posts...")
         logger.info("-" * 60)
 
+        category_counts = {slug: 0 for slug in [url.rstrip('/').split('/')[-1].replace('.htm', '') for url in category_urls]}
+
         for i, (category_slug, post_url) in enumerate(all_post_urls, 1):
             try:
-                current_progress = i
-                show_progress(current_progress, len(all_post_urls), f"Post {i}")
+                show_progress(i, len(all_post_urls), f"Post {i}")
 
                 # Scrape post details
                 post_details = scrape_post_details(scraper, post_url)
@@ -372,6 +426,7 @@ def crawl_posts(args: argparse.Namespace, logger: logging.Logger) -> Dict[str, A
 
                 post_id = post_details['postId']
                 stats['total_posts_scraped'] += 1
+                category_counts[category_slug] += 1
 
                 # Extract comments
                 comments = extract_comments(scraper, post_url)
@@ -451,6 +506,11 @@ def crawl_posts(args: argparse.Namespace, logger: logging.Logger) -> Dict[str, A
 
         logger.info("")
         logger.info("✓ Post scraping complete\n")
+        
+        # Log category breakdown
+        logger.info("Posts saved per category:")
+        for slug, count in category_counts.items():
+            logger.info(f"  {slug}: {count}/{args.count}")
 
     finally:
         scraper.close()
@@ -481,6 +541,8 @@ def print_summary(stats: Dict[str, Any], logger: logging.Logger):
     logger.info(f"  Total posts scraped: {stats['total_posts_scraped']}")
     logger.info(f"  Total posts saved: {stats['total_posts_saved']}")
     logger.info(f"  Failed posts: {stats['failed_posts']}")
+    if stats.get('skipped_duplicates', 0) > 0:
+        logger.info(f"  Skipped duplicates (across categories): {stats['skipped_duplicates']}")
 
     # Comment statistics
     logger.info("\nComment Statistics:")

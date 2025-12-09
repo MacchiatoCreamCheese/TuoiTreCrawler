@@ -11,12 +11,21 @@
   "vote_reactions": {},
   "comments": [
     {
+      "commentId": "170df9ff-6c7a-4836-9c0c-900eac011584",
+      "author": "Hồng Đức",
+      "text": "Có thể cô ta không hiểu ý của biển báo.",
+      "date": "2025-12-09T07:34:14.0506085",
+      "vote_react_list": {},
+      "replies": [],
+      "depth": 0
+    },
+    {
       "commentId": "b78737d2-f1d8-4460-bcb9-fb6ecf2babd6",
       "author": "Khế chua",
       "text": "Hành vi cố tình đi vào đường đã cắm biển cấm là thiếu ý thức nghiêm trọng. Nếu không nhờ lái tàu phản ứng kịp thời và người dân cảnh báo, hậu quả sẽ khôn lường, ảnh hưởng cả chuyến tàu và tính mạng người khác.",
       "date": "2025-12-08T16:11:29.3058894",
       "vote_react_list": {
-        "love": 2
+        "love": 3
       },
       "replies": [],
       "depth": 0
@@ -27,7 +36,8 @@
       "text": "Chỉ vì muốn tiết kiệm vài phút, người lái xe đã đặt cược sự an toàn của bản thân, của người đi tàu, và làm gián đoạn hành trình của đoàn tàu hàng. Lòng tham tiện lợi cá nhân phải trả giá.",
       "date": "2025-12-08T16:12:12.2093169",
       "vote_react_list": {
-        "love": 1
+        "love": 1,
+        "angry": 1
       },
       "replies": [],
       "depth": 0
@@ -69,9 +79,9 @@
     "audio": "./audio/20251208152135041.m4a",
     "errors": []
   },
-  "comment_count": 4,
+  "comment_count": 5,
   "metadata": {
-    "crawled_at": "2025-12-09T01:23:01.707336",
+    "crawled_at": "2025-12-09T13:45:44.812188",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

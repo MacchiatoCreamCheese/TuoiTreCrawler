@@ -11,12 +11,23 @@
   "vote_reactions": {},
   "comments": [
     {
+      "commentId": "28136c8e-7264-4ca5-9a3e-1ae22e1a202a",
+      "author": "Nguyễn Văn Phúc",
+      "text": "Nên dành ít khoảng không để cho các chú nhóc thi thố tài năng biểu diễn, thí dụ ở khu phố đi bộ (cũng là loại hình giải trí cho du khách)",
+      "date": "2025-12-09T10:16:20.0690072",
+      "vote_react_list": {
+        "like": 1
+      },
+      "replies": [],
+      "depth": 0
+    },
+    {
       "commentId": "c823440c-f48f-4e03-baa6-eb60419258c5",
       "author": "Minh Huy bạn Thằng Bình",
       "text": "Tốt nhất nên thu cả xe và lập biên bản báo lên trường noi gương cho các bạn trẻ khác không tái phạm.",
       "date": "2025-12-08T19:21:22.8781144",
       "vote_react_list": {
-        "angry": 2
+        "angry": 4
       },
       "replies": [],
       "depth": 0
@@ -27,8 +38,10 @@
       "text": "Các em chơi 1 môn thể thao xe đạp biểu diễn ở khu đường được rào lại thôi. Nếu phạt nghiêm khắc thì hãy nghiêm khắc cho tất cả thành phần như chạy bộ dưới lòng lề đường, chạy xe đạp trên vỉa hè, công viên, ...",
       "date": "2025-12-08T17:35:30.0187932",
       "vote_react_list": {
-        "like": 2,
-        "love": 4
+        "like": 4,
+        "love": 5,
+        "sad": 1,
+        "wow": 1
       },
       "replies": [],
       "depth": 0
@@ -39,7 +52,8 @@
       "text": "Tịch thu luôn phương tiện.",
       "date": "2025-12-08T17:51:01.8651599",
       "vote_react_list": {
-        "angry": 1
+        "love": 1,
+        "angry": 2
       },
       "replies": [],
       "depth": 0
@@ -58,9 +72,9 @@
     "audio": "./audio/20251208162706329.m4a",
     "errors": []
   },
-  "comment_count": 3,
+  "comment_count": 4,
   "metadata": {
-    "crawled_at": "2025-12-09T01:29:19.345469",
+    "crawled_at": "2025-12-09T13:55:35.880163",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

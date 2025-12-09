@@ -17,7 +17,7 @@
       "date": "2025-12-08T08:23:21.9459396",
       "vote_react_list": {
         "like": 1,
-        "love": 1
+        "love": 2
       },
       "replies": [],
       "depth": 0
@@ -28,7 +28,9 @@
       "text": "Cảm phục sự phá án của CA VN!&nbsp;",
       "date": "2025-12-07T23:30:49.386216",
       "vote_react_list": {
-        "like": 1
+        "like": 1,
+        "sad": 1,
+        "wow": 1
       },
       "replies": [],
       "depth": 0
@@ -40,7 +42,7 @@
       "date": "2025-12-07T21:06:04.8595853",
       "vote_react_list": {
         "like": 2,
-        "love": 2
+        "love": 4
       },
       "replies": [],
       "depth": 0
@@ -61,7 +63,7 @@
   },
   "comment_count": 3,
   "metadata": {
-    "crawled_at": "2025-12-09T01:23:26.187023",
+    "crawled_at": "2025-12-09T13:46:11.818387",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

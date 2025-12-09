@@ -38,8 +38,8 @@
       "text": "Chỉ xử phạt 6,5 triệu đồng thôi sao? Nhẹ hều à.",
       "date": "2025-12-08T16:18:18.1647984",
       "vote_react_list": {
-        "like": 3,
-        "love": 3,
+        "like": 4,
+        "love": 4,
         "angry": 1
       },
       "replies": [],
@@ -52,7 +52,7 @@
       "date": "2025-12-08T16:08:27.1761154",
       "vote_react_list": {
         "like": 2,
-        "love": 1,
+        "love": 2,
         "sad": 1,
         "wow": 1
       },
@@ -65,7 +65,7 @@
       "text": "Lúc doạ người thì mặt đỏ như vang; lúc đối diện công an thì mặt vàng như nghệ. Tay này phải tước bằng lái vĩnh viễn thì mới đáng.",
       "date": "2025-12-08T15:33:01.0258321",
       "vote_react_list": {
-        "like": 1,
+        "like": 2,
         "love": 1,
         "wow": 1,
         "sad": 1
@@ -89,7 +89,7 @@
   },
   "comment_count": 5,
   "metadata": {
-    "crawled_at": "2025-12-09T01:22:46.537400",
+    "crawled_at": "2025-12-09T13:45:26.997510",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

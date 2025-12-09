@@ -17,7 +17,7 @@
       "date": "2025-12-08T18:37:52.9426886",
       "vote_react_list": {
         "like": 2,
-        "love": 1,
+        "love": 3,
         "sad": 1,
         "wow": 1
       },
@@ -53,7 +53,7 @@
   },
   "comment_count": 2,
   "metadata": {
-    "crawled_at": "2025-12-09T01:29:05.760597",
+    "crawled_at": "2025-12-09T13:55:21.310739",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }

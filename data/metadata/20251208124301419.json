@@ -9,7 +9,31 @@
   "category": "phap-luat",
   "audio_podcast": "./audio/20251208124301419.m4a",
   "vote_reactions": {},
-  "comments": [],
+  "comments": [
+    {
+      "commentId": "2b17e7ef-9887-4af0-a9e8-3ec455ff184b",
+      "author": "Lão gàn",
+      "text": "Nếu chỉ có phạt hành chính thì vẫn không biết sợ đâu. Phải bổ sung ngay quy định tịch thu xe vi phạm ngay. Bảo đảm với quy định tịch thu, cả đời cũng không dám lái xe tiếp nữa.",
+      "date": "2025-12-09T05:31:44.0895396",
+      "vote_react_list": {
+        "like": 1
+      },
+      "replies": [],
+      "depth": 0
+    },
+    {
+      "commentId": "f588c32d-dd66-463b-805a-0d6ca758b7c5",
+      "author": "Liên Hồng",
+      "text": "Những trường hợp như thế rất nguy hiểm, tài xế rất manh động. Đề nghị xử lý hình sự &amp; tịch thu ô tô.",
+      "date": "2025-12-09T09:04:36.3988696",
+      "vote_react_list": {
+        "like": 1,
+        "love": 3
+      },
+      "replies": [],
+      "depth": 0
+    }
+  ],
   "url": "https://tuoitre.vn/tai-xe-vi-pham-nong-do-con-hat-vang-canh-sat-len-nap-ca-po-de-bo-chay-20251208124301419.htm",
   "description": "Lực lượng chức năng xác định tài xế N.V.M. (sinh năm 1980, trú tại Đại Phúc, tỉnh Thái Nguyên) vi phạm nồng độ cồn ở mức 0,356 mg/l khí thở.",
   "tags": [],
@@ -23,9 +47,9 @@
     "audio": "./audio/20251208124301419.m4a",
     "errors": []
   },
-  "comment_count": 0,
+  "comment_count": 2,
   "metadata": {
-    "crawled_at": "2025-12-09T01:22:34.286836",
+    "crawled_at": "2025-12-09T13:45:09.578139",
     "crawler_version": "1.0.0",
     "data_format_version": "1.0"
   }
